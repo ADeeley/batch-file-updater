@@ -1,0 +1,19 @@
+from os import listdir
+from os.path import isfile, join
+
+mypath = "F:\\mystuff\\projects\\file_updater\\testfiles"
+files = [mypath + "\\" + f for f in listdir(mypath) if isfile(join(mypath, f))] # generates a list of file names
+
+
+def write_to_files(files):
+    '''Pre: text must be string
+            files must be list of strings
+    '''
+    for file in files:
+        with open(file, 'w') as f:
+            with open("F:\\mystuff\\projects\\file_updater\\replacement_text.txt", "r") as text:
+                for line in text.read():
+                    f.write(line)
+
+
+write_to_files(files)
